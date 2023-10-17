@@ -25,16 +25,16 @@ stages:
       - bash: ls -R $(Build.ArtifactStagingDirectory)
       - task: CopyFiles@2
         inputs:
-          SourceFolder: 'DefaultWorkingDirectory'
+          SourceFolder: '$(System.DefaultWorkingDirectory)'
           Contents: |
             **/*.yml
             **/*.java
-          TargetFolder: 'ArtifactStagingDirectory'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)'
       - bash: ls -R $(Build.ArtifactStagingDirectory)
       - task: PublishBuildArtifacts@1
         inputs:
-              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-              ArtifactName: 'drop'
-              publishLocation: 'Container'
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'drop'
+          publishLocation: 'Container'
       
       
