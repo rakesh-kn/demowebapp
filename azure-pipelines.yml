@@ -24,16 +24,16 @@ stages:
       - bash: mvn -version
       - bash: ls -R $(Build.ArtifactStagingDirectory)
       - task: CopyFiles@2
-  inputs:
-    SourceFolder: 'DefaultWorkingDirectory'
-    Contents: |
-      **/*.yml
-      **/*.java
-    TargetFolder: 'ArtifactStagingDirectory'
-      - bash: ls -R $(Build.ArtifactStagingDirectory)
+        inputs:
+          SourceFolder: 'DefaultWorkingDirectory'
+          Contents: |
+            **/*.yml
+            **/*.java
+          TargetFolder: 'ArtifactStagingDirectory'
       - task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+        inputs:
+              PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+              ArtifactName: 'drop'
+              publishLocation: 'Container'
+      
       
